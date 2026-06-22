@@ -2,7 +2,6 @@
 
 An OpenClaw AgentSkill for onboarding new bots/familiars with:
 
-- safe bot identity/workspace setup
 - official GitHub MCP connection guidance
 - broad Google Workspace OAuth setup
 - local secret storage conventions
@@ -13,7 +12,7 @@ This repo is intentionally public-safe. It does **not** contain secrets, user-sp
 
 ## What this is for
 
-Use this skill when an already-created OpenClaw bot needs to be connected to GitHub and Google Workspace accounts. It assumes standard OpenClaw onboarding has already handled bot identity, name, workspace, and persona. Before connecting anything, the bot asks only which GitHub account/org and Google account(s) should be connected.
+Use this skill when an already-created OpenClaw bot needs to be connected to GitHub and Google Workspace accounts. It assumes standard OpenClaw onboarding has already handled bot identity, name, workspace, channels, and persona; this skill should not ask about or change those. Before connecting anything, the bot asks only which GitHub account/org and Google account(s) should be connected.
 
 ## What it includes
 
@@ -71,4 +70,4 @@ The bot should load `SKILL.md`, ask the connection-specific questions, and proce
 
 ## Extending
 
-Keep this repo generic. Put customer/operator-specific paths, account names, and helper commands in that bot's local `TOOLS.md`, not in this public repo.
+Keep this repo generic. Put customer/operator-specific account names and helper commands in that bot's local `TOOLS.md`, not in this public repo.

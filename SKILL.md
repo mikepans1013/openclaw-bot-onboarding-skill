@@ -1,11 +1,11 @@
 ---
 name: openclaw-bot-onboarding
-description: Onboard a new OpenClaw bot/familiar with safe identity setup, official GitHub MCP connection, broad Google Workspace OAuth access, local secret storage, verification, and write-action guardrails.
+description: Connect an existing OpenClaw bot/familiar to the official GitHub MCP server and broad Google Workspace OAuth, with local secret storage, verification, and write-action guardrails.
 ---
 
 # OpenClaw Bot Onboarding
 
-Use this skill when an already-created OpenClaw bot/familiar needs GitHub MCP access and Google Workspace OAuth access. Assume OpenClaw's normal bot onboarding has already handled bot identity, name, workspace, and basic persona files. This skill is deliberately account-ambiguous: never assume which GitHub account, org, or Google account should be connected.
+Use this skill when an already-created OpenClaw bot/familiar needs GitHub MCP access and Google Workspace OAuth access. Assume OpenClaw's normal bot onboarding has already handled bot identity, name, workspace, channels, and persona. Do not ask about or change those here. This skill is deliberately account-ambiguous: never assume which GitHub account, org, or Google account should be connected.
 
 ## First Questions
 

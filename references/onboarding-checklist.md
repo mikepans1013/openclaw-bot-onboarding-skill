@@ -2,7 +2,7 @@
 
 ## 1. Confirm connection targets
 
-Assume OpenClaw's standard bot onboarding has already handled the bot name, owner, workspace, channel setup, and persona files. Do not ask those general onboarding questions here.
+Assume OpenClaw's standard bot onboarding has already handled the bot name, owner, workspace, channel setup, and persona files. Do not ask about, inspect, or change those general onboarding settings here.
 
 Ask and record only connection-specific targets:
 

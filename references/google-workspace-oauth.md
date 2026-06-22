@@ -118,7 +118,7 @@ Good first helpers:
 - Drive metadata search
 - token/API healthcheck
 
-## Documentation in the bot workspace
+## Documentation in local TOOLS.md
 
 Document safe details in `TOOLS.md`:
 
