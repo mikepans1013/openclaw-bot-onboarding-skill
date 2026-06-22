@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local secrets / generated OAuth payloads
+*.secret.json
+*-oauth.json
+*-client-secret.json
+.env
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
