@@ -1,33 +1,20 @@
 # OpenClaw Bot Onboarding Checklist
 
-## 1. Confirm target identity
+## 1. Confirm connection targets
 
-Ask and record:
+Assume OpenClaw's standard bot onboarding has already handled the bot name, owner, workspace, channel setup, and persona files. Do not ask those general onboarding questions here.
 
-- Human/operator name
-- Bot/familiar name
-- Bot workspace path
-- Primary chat surfaces/channels
+Ask and record only connection-specific targets:
+
 - GitHub user/org to connect
+- GitHub repo access scope: public-only, selected private repos, or broad private repo access
 - Google account(s) to connect
 - Whether broad Google Workspace access is approved
+- Whether the bot should remain read-only by default, or whether write helpers are expected after exact approval
 
 Do not assume the current machine's user, current GitHub login, or existing Google tokens are the right target.
 
-## 2. Prepare bot workspace
-
-Create or review:
-
-- `AGENTS.md` — operating rules and red lines
-- `SOUL.md` — personality/tone
-- `USER.md` — public-safe facts about the human/operator
-- `TOOLS.md` — local tool notes, helper commands, token file paths without values
-- `memory/` — daily notes directory
-- `MEMORY.md` — only if this is a private main-session bot for a single human
-
-Do not copy another user's private `MEMORY.md` into a new bot.
-
-## 3. GitHub MCP
+## 2. GitHub MCP
 
 Read `references/github-mcp.md`.
 
@@ -42,7 +29,7 @@ After setup, verify:
 - Repository visibility matches intended access.
 - Destructive actions require explicit approval.
 
-## 4. Google Workspace OAuth
+## 3. Google Workspace OAuth
 
 Read `references/google-workspace-oauth.md`.
 
@@ -57,7 +44,7 @@ python3 scripts/google_token_probe.py \
   --checks userinfo,calendar,gmail,drive
 ```
 
-## 5. Build only useful helpers
+## 4. Build only useful helpers
 
 Do not build helpers just because APIs are available. Build only what makes onboarding easier or supports a known workflow.
 
@@ -70,7 +57,7 @@ Good default helpers:
 
 Avoid broad data exports and write helpers unless specifically requested.
 
-## 6. Final smoke test
+## 5. Final smoke test
 
 Minimum checks:
 
@@ -80,7 +67,7 @@ Minimum checks:
 - Secrets are not printed in logs or committed to git.
 - `git status` is clean for any skill/repo created.
 
-## 7. Final report
+## 6. Final report
 
 Include:
 

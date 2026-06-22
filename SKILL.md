@@ -5,18 +5,16 @@ description: Onboard a new OpenClaw bot/familiar with safe identity setup, offic
 
 # OpenClaw Bot Onboarding
 
-Use this skill when creating or configuring a new OpenClaw bot/familiar that needs GitHub MCP access and Google Workspace OAuth access. This is deliberately user-ambiguous: never assume which human, GitHub account, org, or Google account should be connected.
+Use this skill when an already-created OpenClaw bot/familiar needs GitHub MCP access and Google Workspace OAuth access. Assume OpenClaw's normal bot onboarding has already handled bot identity, name, workspace, and basic persona files. This skill is deliberately account-ambiguous: never assume which GitHub account, org, or Google account should be connected.
 
 ## First Questions
 
-Before installing or authorizing anything, ask:
+Before installing or authorizing anything, ask only the connection-specific questions:
 
-1. Which human/operator owns this bot?
-2. What should the bot be called, and where is its workspace?
-3. Which GitHub user/org should it connect to?
-4. Which Google account(s) should it connect to?
-5. Is broad Workspace access approved for those Google accounts?
-6. Should the bot be read-only by default, or are write helpers expected after explicit approval?
+1. Which GitHub user/org should this bot connect to?
+2. Which Google account(s) should this bot connect to?
+3. Is broad Workspace access approved for those Google account(s)?
+4. Should the bot stay read-only by default, or are write helpers expected after explicit approval?
 
 Stop if the user cannot identify the target account(s). Never reuse another bot's tokens or credentials.
 
@@ -41,19 +39,17 @@ Read `references/onboarding-checklist.md` first. Read the GitHub and Google refe
 
 ## Standard Workflow
 
-1. Clarify owner, bot identity, GitHub target, and Google account(s).
-2. Set up bot workspace files (`AGENTS.md`, `SOUL.md`, `USER.md`, `TOOLS.md`) without copying another user's private memory.
-3. Connect GitHub via the official GitHub MCP server reference, then verify tools load in OpenClaw.
-4. Connect Google Workspace via OAuth using the broad `workspace-ea` scope bundle in `references/google-workspace-oauth.md`.
-5. Verify scopes and APIs with `scripts/google_token_probe.py`.
-6. Document only safe operational facts in `TOOLS.md`: account labels, helper commands, token file paths without values, verified APIs, and guardrails.
-7. Run smoke tests and leave the bot with a short onboarding report listing what is connected, what is blocked, and what still needs human approval.
+1. Clarify GitHub target, Google account(s), broad-scope approval, and write boundaries.
+2. Connect GitHub via the official GitHub MCP server reference, then verify tools load in OpenClaw.
+3. Connect Google Workspace via OAuth using the broad `workspace-ea` scope bundle in `references/google-workspace-oauth.md`.
+4. Verify scopes and APIs with `scripts/google_token_probe.py`.
+5. Document only safe operational facts in `TOOLS.md`: account labels, helper commands, token file paths without values, verified APIs, and guardrails.
+6. Run smoke tests and leave the bot with a short connection report listing what is connected, what is blocked, and what still needs human approval.
 
 ## Output Standard
 
 When onboarding is complete, report:
 
-- Bot name/workspace
 - Connected GitHub account/org and MCP status
 - Connected Google account(s) and verified APIs
 - Secret file paths, without secret values
