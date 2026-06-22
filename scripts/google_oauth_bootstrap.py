@@ -101,7 +101,7 @@ def get_json(url, access_token):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--account-label", required=True, help="short local label, e.g. mhppros")
+    ap.add_argument("--account-label", required=True, help="short local label, e.g. ops")
     ap.add_argument("--email", help="expected authenticated email")
     ap.add_argument("--client-secret-json", required=True)
     ap.add_argument("--token-out", required=True)
