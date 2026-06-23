@@ -31,18 +31,12 @@ After setup, verify:
 
 ## 3. Google Workspace OAuth
 
-Read `references/google-workspace-oauth.md`.
+Google OAuth is intentionally not documented in this onboarding repo. Use the dedicated private repo instead:
 
-Use the `workspace-ea` scope bundle when the user explicitly approves broad Google Workspace access. Store client secrets and token payloads in `~/.openclaw/secrets/` with `chmod 600`.
+- `https://github.com/mikepans1013/google-workspace-oauth-skill`
+- Local canonical path when available: `/Users/henrykent/skills/google-workspace-oauth`
 
-Verify using:
-
-```bash
-python3 scripts/google_token_probe.py \
-  --token ~/.openclaw/secrets/google-<label>-oauth.json \
-  --client-secret-json ~/.openclaw/secrets/google-<label>-client-secret.json \
-  --checks userinfo,calendar,gmail,drive
-```
+Follow that skill for scope selection, OAuth bootstrap, token probing, Drive structure/routing, and safety rules. Do not copy or fork those instructions back into this repo. Verification commands should come from that repo's `SKILL.md` / scripts.
 
 ## 4. Build only useful helpers
 
@@ -62,8 +56,8 @@ Avoid broad data exports and write helpers unless specifically requested.
 Minimum checks:
 
 - OpenClaw sees the GitHub MCP tools.
-- Google token probe verifies the intended account.
-- A read-only calendar or Gmail metadata query works.
+- Google OAuth, if requested, was completed and verified using `mikepans1013/google-workspace-oauth-skill`.
+- A read-only calendar/Gmail/Drive metadata query works, as appropriate for the approved scopes.
 - Secrets are not printed in logs or committed to git.
 - `git status` is clean for any skill/repo created.
 

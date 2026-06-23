@@ -1,11 +1,11 @@
 ---
 name: openclaw-bot-onboarding
-description: Connect an existing OpenClaw bot/familiar to the official GitHub MCP server and broad Google Workspace OAuth, with local secret storage, verification, and write-action guardrails.
+description: Connect an existing OpenClaw bot/familiar to the official GitHub MCP server and route Google Workspace OAuth setup to the dedicated private Google OAuth skill repo, with local secret storage, verification, and write-action guardrails.
 ---
 
 # OpenClaw Bot Onboarding
 
-Use this skill when an already-created OpenClaw bot/familiar needs GitHub MCP access and Google Workspace OAuth access. Assume OpenClaw's normal bot onboarding has already handled bot identity, name, workspace, channels, and persona. Do not ask about or change those here. This skill is deliberately account-ambiguous: never assume which GitHub account, org, or Google account should be connected.
+Use this skill when an already-created OpenClaw bot/familiar needs GitHub MCP access and/or a handoff to the dedicated Google Workspace OAuth setup skill. Assume OpenClaw's normal bot onboarding has already handled bot identity, name, workspace, channels, and persona. Do not ask about or change those here. This skill is deliberately account-ambiguous: never assume which GitHub account, org, or Google account should be connected.
 
 ## First Questions
 
@@ -31,18 +31,15 @@ Stop if the user cannot identify the target account(s). Never reuse another bot'
 
 - `references/onboarding-checklist.md` — end-to-end OpenClaw bot onboarding checklist.
 - `references/github-mcp.md` — official GitHub MCP reference, OpenClaw setup guidance, and install nuances.
-- `references/google-workspace-oauth.md` — broad Google Workspace OAuth workflow and exact scope bundle.
-- `scripts/google_oauth_bootstrap.py` — local OAuth bootstrap helper.
-- `scripts/google_token_probe.py` — safe token/API verification helper.
 
-Read `references/onboarding-checklist.md` first. Read the GitHub and Google references only when doing those setup phases.
+Read `references/onboarding-checklist.md` first. Read `references/github-mcp.md` for GitHub MCP setup. For Google OAuth, use the dedicated private repo `mikepans1013/google-workspace-oauth-skill`; this repo intentionally does not duplicate Google OAuth setup instructions or scripts.
 
 ## Standard Workflow
 
 1. Clarify GitHub target, Google account(s), broad-scope approval, and write boundaries.
 2. Connect GitHub via the official GitHub MCP server reference, then verify tools load in OpenClaw.
-3. Connect Google Workspace via OAuth using the broad `workspace-ea` scope bundle in `references/google-workspace-oauth.md`.
-4. Verify scopes and APIs with `scripts/google_token_probe.py`.
+3. If Google Workspace access is requested, switch to / clone the dedicated private `mikepans1013/google-workspace-oauth-skill` repo and follow that skill; do not use copied instructions from this repo.
+4. Verify Google scopes/APIs using the probe script from the dedicated Google OAuth repo, not a local copy in this repo.
 5. Document only safe operational facts in `TOOLS.md`: account labels, helper commands, token file paths without values, verified APIs, and guardrails.
 6. Run smoke tests and leave the bot with a short connection report listing what is connected, what is blocked, and what still needs human approval.
 

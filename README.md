@@ -3,7 +3,7 @@
 An OpenClaw AgentSkill for onboarding new bots/familiars with:
 
 - official GitHub MCP connection guidance
-- broad Google Workspace OAuth setup
+- Google Workspace OAuth handoff to the dedicated private OAuth skill repo
 - local secret storage conventions
 - verification checklists
 - write-action approval guardrails
@@ -21,10 +21,7 @@ SKILL.md
 references/
   onboarding-checklist.md
   github-mcp.md
-  google-workspace-oauth.md
 scripts/
-  google_oauth_bootstrap.py
-  google_token_probe.py
 ```
 
 ## GitHub MCP approach
@@ -37,12 +34,12 @@ The repo documents OpenClaw-specific setup decisions and nuances: auth identity 
 
 ## Google OAuth approach
 
-The skill includes reusable local scripts adapted from the Google Workspace OAuth setup pattern:
+This repo no longer carries its own Google OAuth instructions or helper scripts. Use the dedicated private Google OAuth skill repo instead:
 
-- `scripts/google_oauth_bootstrap.py`
-- `scripts/google_token_probe.py`
+- `https://github.com/mikepans1013/google-workspace-oauth-skill`
+- Local canonical path when available: `/Users/henrykent/skills/google-workspace-oauth`
 
-The default broad onboarding bundle is `workspace-ea`, covering Gmail, Calendar, Drive, Drive Activity, Docs, Sheets, Slides, Forms, Tasks, Contacts, OpenID/email/profile. Helpers should still default to read-only behavior and require approval before write actions.
+That repo owns scope selection, OAuth bootstrap/probe scripts, token storage guidance, Drive structure/routing, and Google write-action guardrails. Keep those instructions centralized there.
 
 ## Safety boundaries
 
@@ -64,9 +61,9 @@ git clone https://github.com/mikepans1013/openclaw-bot-onboarding-skill.git ~/sk
 
 Then start a request such as:
 
-> Onboard a new OpenClaw bot with GitHub MCP and Google Workspace OAuth.
+> Onboard a new OpenClaw bot with GitHub MCP and, if requested, hand off Google Workspace OAuth to the dedicated private OAuth skill repo.
 
-The bot should load `SKILL.md`, ask the connection-specific questions, and proceed only after the target GitHub and Google account(s) are confirmed.
+The bot should load `SKILL.md`, ask the connection-specific questions, and proceed only after the target GitHub account/org and any Google OAuth handoff target account(s) are confirmed.
 
 ## Extending
 
