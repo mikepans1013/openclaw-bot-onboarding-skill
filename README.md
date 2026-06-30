@@ -14,6 +14,8 @@ This repo is intentionally public-safe. It does **not** contain secrets, user-sp
 
 Use this skill when an already-created OpenClaw bot needs to be connected to GitHub and Google Workspace accounts. It assumes standard OpenClaw onboarding has already handled bot identity, name, workspace, channels, and persona; this skill should not ask about or change those. Before connecting anything, the bot asks only which GitHub account/org and Google account(s) should be connected.
 
+It should also clarify whether the user wants **prep only** or **live setup** before saving secrets or changing live MCP/OAuth configuration.
+
 ## What it includes
 
 ```text
@@ -31,6 +33,8 @@ The skill references GitHub's official MCP server instead of copying install com
 https://github.com/github/github-mcp-server
 
 The repo documents OpenClaw-specific setup decisions and nuances: auth identity confusion, PAT scopes, SSH vs MCP auth, tool-schema failures, stable server naming, and write-action approval boundaries.
+
+It also now documents an OpenClaw-native MCP configuration path (`openclaw mcp set ...`) and rollback expectations.
 
 ## Google OAuth approach
 
@@ -63,7 +67,7 @@ Then start a request such as:
 
 > Onboard a new OpenClaw bot with GitHub MCP and, if requested, hand off Google Workspace OAuth to the dedicated private OAuth skill repo.
 
-The bot should load `SKILL.md`, ask the connection-specific questions, and proceed only after the target GitHub account/org and any Google OAuth handoff target account(s) are confirmed.
+The bot should load `SKILL.md`, determine whether the user wants prep-only or live setup, ask the first questions, and proceed only after the target account(s) and mode are confirmed.
 
 ## Extending
 

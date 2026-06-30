@@ -24,6 +24,9 @@ Do not copy stale install snippets into this skill. The official repo changes fa
 
 4. Add the MCP server with a stable name such as `github` or `github-official`.
    - If installing the official release binary, verify the published sha256 checksum from `github/github-mcp-server` before linking it into `~/.openclaw/bin/`.
+   - For OpenClaw-managed MCP config, prefer `openclaw mcp set <name> '<json>'`.
+   - Do not assume generic config patch APIs can mutate protected `mcp.servers.*` paths.
+   - A small local launcher that reads the PAT from `~/.openclaw/secrets/` is a good pattern when you want to keep credentials out of the saved MCP config object.
 
 5. Reload/restart OpenClaw only as required by the current OpenClaw MCP configuration path.
 
@@ -52,3 +55,12 @@ Do not copy stale install snippets into this skill. The official repo changes fa
 - Runtime health and gateway status pass after the MCP config change.
 - If writes are needed, use a test repo/branch first.
 - Document safe details in `TOOLS.md`; never document tokens.
+
+## Rollback checklist
+
+If the user wants to undo the live install or if verification fails:
+
+- remove the MCP server with `openclaw mcp unset <name>`
+- move live secret files / launchers / downloaded binaries to recoverable trash instead of hard deleting them
+- verify that OpenClaw no longer lists the MCP server
+- remove any notes in `TOOLS.md` that incorrectly say the integration is active

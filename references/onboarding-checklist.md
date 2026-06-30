@@ -24,6 +24,7 @@ Connect through the official GitHub MCP server only:
 
 After setup, verify:
 
+- Whether the install was intended as prep-only or live
 - GitHub MCP tools appear in OpenClaw tool list/status.
 - The authenticated account is the intended GitHub user or installation.
 - Repository visibility matches intended access.

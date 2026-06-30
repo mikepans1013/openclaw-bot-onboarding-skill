@@ -7,6 +7,28 @@ description: Connect an existing OpenClaw bot/familiar to the official GitHub MC
 
 Use this skill when an already-created OpenClaw bot/familiar needs GitHub MCP access and/or a handoff to the dedicated Google Workspace OAuth setup skill. Assume OpenClaw's normal bot onboarding has already handled bot identity, name, workspace, channels, and persona. Do not ask about or change those here. This skill is deliberately account-ambiguous: never assume which GitHub account, org, or Google account should be connected.
 
+## Operating Modes
+
+Before doing live setup, determine which mode the user wants:
+
+- **Prep only** — review docs, collect requirements, propose file paths/labels, but do not save secrets or change live config.
+- **Live GitHub only** — install/configure GitHub MCP only.
+- **Live Google only** — set up Google OAuth only.
+- **Full live onboarding** — do both GitHub MCP and Google OAuth.
+
+If the user's request is ambiguous (for example, "begin this process"), default to **Prep only** and ask before persisting credentials or editing live config.
+
+## First Response Contract
+
+The first substantive reply should explicitly confirm or ask:
+
+1. Is this **prep only** or **live setup**?
+2. For GitHub, should access start **read-only** or **write-capable with explicit per-action approval**?
+3. For Google, is broad Workspace access already approved, or is approval still pending?
+4. Should secrets be stored locally under `~/.openclaw/secrets/` on this host?
+
+Do not persist tokens, client secrets, or live MCP config until the user has clearly authorized the relevant live setup mode.
+
 ## First Questions
 
 Before installing or authorizing anything, ask only the connection-specific questions:
